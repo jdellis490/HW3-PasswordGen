@@ -7,6 +7,7 @@ This project was motivated by my drive to understand how to random aspects on we
 To use this one simply just presses the "Generate Password" button which prompts the user to answer questions regarding the options for their password. Then it generates a password based on length and includes random characters the user selected from the prompts. It can be found here: https://jdellis490.github.io/HW3-PasswordGen/ 
 This is what it looks like:
 
-![alt text]
+<img width="1296" alt="Password Generator" src="https://user-images.githubusercontent.com/81279037/160334983-9274c8f5-340c-47d5-b48d-79634c840bc8.png">
+
 
 
