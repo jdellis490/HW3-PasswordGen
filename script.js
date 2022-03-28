@@ -7,26 +7,71 @@ var allSpecialCharacters = ["!","#","$","%","&","'","(",")","*","+","-",".","/",
 
 
 function generatePassword(){
-  var passwordLength = prompt("What is the password length? Must be between 8 and 128 characters")
+  var passwordLength = prompt("What is the password length? 8-128 characters");
+     if (passwordLength<8 || passwordLength>128) {
+         alert("Must be between 8 and 128 characters!");
+         return generatePassword();
+      } else {alert("Continue");
+    }
+  
   var upperCase = confirm("Include uppercase letters?");
   var lowerCase = confirm("Include lowercase letters?");
   var specialChar = confirm("Include special characters?");
   var hasNumbers= confirm("Include numbers?");
 
   var passwordSettings = {
-      passwordLength: passwordLength,
-      upperCase: upperCase,
-      lowerCase: lowerCase,
-      specialChar: specialChar,
-      hasNumbers: hasNumbers,
-
-
+    upperCase: upperCase,
+    lowerCase: lowerCase,
+    specialChar: specialChar,
+    hasNumbers: hasNumbers,
   }
+
+
+  var result = [];
+  var requiredCharacters = [];
+
   function selectRandomChar(array){
-    return [Math.floor(Math.random() * array.length)]
+  return array[Math.floor(Math.random() * array.length)]
   }
+
+if(passwordSettings.upperCase){
+  result.push(selectRandomChar(allUpperCase));
+  requiredCharacters.concat(allUpperCase);
+}
+if(passwordSettings.lowerCase){
+  result.push(selectRandomChar(allLowerCase));
+  requiredCharacters.concat(allLowerCase);
+}
+if(passwordSettings.specialChar){
+  result.push(selectRandomChar(allSpecialCharacters));
+  requiredCharacters.concat(allSpecialCharacters);
+}
+if(passwordSettings.hasNumbers){
+  result.push(selectRandomChar(allNumbers));
+  requiredCharacters.concat(allNumbers);
+}
+
 
 }
+
+
+
+
+
+
+
+    
+    
+
+  
+
+
+  
+  
+  
+    
+
+
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
@@ -37,7 +82,7 @@ function writePassword() {
   passwordText.value = password;
 
 }
-
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
 
