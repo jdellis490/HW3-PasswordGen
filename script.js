@@ -20,6 +20,7 @@ function generatePassword(){
   var hasNumbers= confirm("Include numbers?");
 
   var passwordSettings = {
+    passwordLength: passwordLength,
     upperCase: upperCase,
     lowerCase: lowerCase,
     specialChar: specialChar,
@@ -29,6 +30,7 @@ function generatePassword(){
 
   var result = [];
   var requiredCharacters = [];
+  var charArray = [];
 
   function selectRandomChar(array){
   return array[Math.floor(Math.random() * array.length)]
@@ -36,20 +38,31 @@ function generatePassword(){
 
 if(passwordSettings.upperCase){
   result.push(selectRandomChar(allUpperCase));
-  requiredCharacters.concat(allUpperCase);
+  requiredCharacters = charArray.concat(allUpperCase);
+
 }
 if(passwordSettings.lowerCase){
   result.push(selectRandomChar(allLowerCase));
-  requiredCharacters.concat(allLowerCase);
+  requiredCharacters = charArray.concat(allLowerCase);
 }
 if(passwordSettings.specialChar){
   result.push(selectRandomChar(allSpecialCharacters));
-  requiredCharacters.concat(allSpecialCharacters);
+  requiredCharacters = charArray.concat(allSpecialCharacters);
 }
 if(passwordSettings.hasNumbers){
   result.push(selectRandomChar(allNumbers));
-  requiredCharacters.concat(allNumbers);
+  requiredCharacters = charArray.concat(allNumbers);
 }
+
+
+var currentPasswordLength = result.length;
+
+for (var i = 0; i < passwordSettings.passwordLength - currentPasswordLength; i++) {
+  var randomChar = selectRandomChar(requiredCharacters);
+  result.push(randomChar);
+  
+}
+console.log(result);
 
 
 }
