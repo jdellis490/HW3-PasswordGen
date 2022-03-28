@@ -63,27 +63,7 @@ for (var i = 0; i < passwordSettings.passwordLength - currentPasswordLength; i++
 }
 return result.join("");
 
-
 }
-
-
-
-
-
-
-
-
-    
-    
-
-  
-
-
-  
-  
-  
-    
-
 
 var generateBtn = document.querySelector("#generate");
 
